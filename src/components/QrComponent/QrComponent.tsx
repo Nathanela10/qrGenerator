@@ -50,19 +50,19 @@ function QrComponent() {
         <button className='qrComponent__card-button' onClick={generateQRCode}>
           Generar QR
         </button>
-        <div className='qrComponent__qr'>
-          {qrCodeText && (
+        {qrCodeText && (
+          <div className='qrComponent__qr'>
             <QRCode
               className='qrComponent__card-qrCode'
               value={qrCodeText}
               level={errorCorrectionLevel}
             />
-          )}
-          <div className='qrComponent__buttons'>
-            <button className='qrComponent__buttons-button'>Descargar</button>
-            <button className='qrComponent__buttons-button'>Reiniciar</button>
+            <div className='qrComponent__buttons'>
+              <button className='qrComponent__buttons-button'>Descargar</button>
+              <button className='qrComponent__buttons-button'>Reiniciar</button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
