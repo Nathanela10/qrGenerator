@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import QRCode from 'qrcode.react';
+import { saveAs } from 'file-saver'; // Importar saveAs de file-saver
 import './QrComponent.css';
 
 function QrComponent() {
@@ -55,6 +56,23 @@ function QrComponent() {
     return () => clearTimeout(timeout);
   }, [showAlert]);
 
+  const handleDownloadQR = () => {
+    const canvas = document.querySelector(
+      '.qrComponent__card-qrCode'
+    ) as HTMLCanvasElement;
+    console.log('el canva es: ', canvas);
+
+    if (canvas) {
+      canvas.toBlob(blob => {
+        if (blob) {
+          saveAs(blob, 'qr_code.png');
+        }
+      });
+    } else {
+      console.error('No se encontró el canvas');
+    }
+  };
+
   return (
     <div className='qrComponent'>
       <div className='qrComponent__card'>
@@ -79,8 +97,7 @@ function QrComponent() {
             value={errorCorrectionLevel}
             onChange={handleCorrectionLevelChange}
             disabled={qrGenerated}
-            style={{ pointerEvents: qrGenerated ? 'none' : 'auto' }}
-          >
+            style={{ pointerEvents: qrGenerated ? 'none' : 'auto' }}>
             <option value='L'>Simple</option>
             <option value='M'>Moderado</option>
             <option value='Q'>Avanzado</option>
@@ -99,12 +116,19 @@ function QrComponent() {
           <div className='qrComponent__qr'>
             <QRCode
               className='qrComponent__card-qrCode'
+              id='my-canvas'
               value={qrCodeText}
               level={errorCorrectionLevel}
             />
             <div className='qrComponent__buttons'>
-              <button className='qrComponent__buttons-button'>Descargar</button>
-              <button className='qrComponent__buttons-button' onClick={resetApp}>
+              <button
+                className='qrComponent__buttons-button'
+                onClick={handleDownloadQR}>
+                Descargar
+              </button>
+              <button
+                className='qrComponent__buttons-button'
+                onClick={resetApp}>
                 Reiniciar
               </button>
             </div>
