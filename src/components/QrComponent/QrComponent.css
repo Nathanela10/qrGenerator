@@ -73,6 +73,7 @@
   background-color: #ffffff63;
   color: rgba(0, 0, 0, 0.521);
   font-size: 1rem;
+  cursor: pointer;
 }
 
 .qrComponent__card-button {

@@ -7,6 +7,8 @@ function QrComponent() {
   const [qrCodeText, setQRCodeText] = useState('');
   const [errorCorrectionLevel, setErrorCorrectionLevel] = useState('L');
   const [showAlert, setShowAlert] = useState(false);
+  const [qrGenerated, setQrGenerated] = useState(false);
+  const [inputDisabled, setInputDisabled] = useState(false);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
@@ -15,7 +17,9 @@ function QrComponent() {
   const handleCorrectionLevelChange = (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setErrorCorrectionLevel(e.target.value);
+    if (!qrGenerated) {
+      setErrorCorrectionLevel(e.target.value);
+    }
   };
 
   const generateQRCode = () => {
@@ -27,6 +31,8 @@ function QrComponent() {
     } else {
       setQRCodeText(text);
       setShowAlert(false);
+      setQrGenerated(true);
+      setInputDisabled(true);
     }
   };
 
@@ -50,6 +56,7 @@ function QrComponent() {
           placeholder='Ingresa la URL'
           value={text}
           onChange={handleTextChange}
+          disabled={inputDisabled}
         />
         <div className='qrComponent__containerSelect'>
           <label
@@ -61,7 +68,9 @@ function QrComponent() {
             className='qrComponent__card-select'
             id='errorCorrectionLevel'
             value={errorCorrectionLevel}
-            onChange={handleCorrectionLevelChange}>
+            onChange={handleCorrectionLevelChange}
+            disabled={qrGenerated}
+            style={{ pointerEvents: qrGenerated ? 'none' : 'auto' }}>
             <option value='L'>Simple</option>
             <option value='M'>Moderado</option>
             <option value='Q'>Avanzado</option>
