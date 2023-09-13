@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import QRCode from 'qrcode.react';
-import { saveAs } from 'file-saver'; // Importar saveAs de file-saver
+import { saveAs } from 'file-saver';
 import './QrComponent.css';
 
 function QrComponent() {
@@ -23,8 +23,18 @@ function QrComponent() {
     }
   };
 
+  function isValidURL(input: string) {
+    const urlRegex = /^(https?|ftp|file):\/\/[^\s/$.?#].[^\s]*$/i;
+    return urlRegex.test(input);
+  }
+
   const generateQRCode = () => {
     if (text.trim() === '') {
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 5000);
+    } else if (!isValidURL(text)) {
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);
@@ -60,8 +70,6 @@ function QrComponent() {
     const canvas = document.querySelector(
       '.qrComponent__card-qrCode'
     ) as HTMLCanvasElement;
-    console.log('el canva es: ', canvas);
-
     if (canvas) {
       canvas.toBlob(blob => {
         if (blob) {
@@ -109,7 +117,7 @@ function QrComponent() {
         </button>
         <div className={`alert__container ${showAlert ? 'show' : ''}`}>
           <div className={`alert ${showAlert ? 'show' : ''}`}>
-            Por favor, ingrese una URL antes de generar el QR.{' '}
+          {showAlert ? (text.trim() === '' ? 'Ingresa una URL' : 'Escribe una URL válida para generar el código QR') : ''}
           </div>
         </div>
         {qrCodeText && (
