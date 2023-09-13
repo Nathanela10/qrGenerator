@@ -28,8 +28,10 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 30vw;
-  text-align: center;
+  width: 35vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .qrComponent__card-h1 {
@@ -50,18 +52,22 @@
   font-size: 1rem;
 }
 
+.qrComponent__containerSelect {
+  display: flex;
+  align-items: center;
+  width: 33vw;
+  padding: 20px 0 0 0;
+}
+
 .qrComponent__card-label {
-  display: block;
-  text-align: left;
   color: #333;
-  padding: 20px 20px;
   font-size: 1.2rem;
+  width: 100%;
 }
 
 .qrComponent__card-select {
-  width: 94%;
+  width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #ffffff63;
@@ -120,4 +126,26 @@
 .qrComponent__buttons-button:hover {
   background-color: #1378e4;
   color: #fff;
+}
+
+.alert__container {
+  display: flex;
+  justify-content: center;
+}
+
+.alert {
+  background-color: rgba(255, 0, 0, 0.9);
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+  display: none;
+  width: 20vw;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  justify-content: space-around;
+}
+
+.alert.show {
+  display: block;
 }
