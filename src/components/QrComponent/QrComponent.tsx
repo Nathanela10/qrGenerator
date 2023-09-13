@@ -22,30 +22,47 @@ function QrComponent() {
   };
 
   return (
-    <div className="container">
-      <div className="card">
-        <h1>Generador de Códigos QR</h1>
+    <div className='qrComponent'>
+      <div className='qrComponent__card'>
+        <h1 className='qrComponent__card-h1'>Generador de Códigos QR</h1>
         <input
-          type="text"
-          placeholder="Ingrese el texto"
+          className='qrComponent__card-input'
+          type='text'
+          placeholder='Ingresa la Url'
           value={text}
           onChange={handleTextChange}
         />
-
-        <label htmlFor="errorCorrectionLevel">Nivel de corrección de errores:</label>
+        <label
+          htmlFor='errorCorrectionLevel'
+          className='qrComponent__card-label'>
+          Nivel de corrección de errores:
+        </label>
         <select
-          id="errorCorrectionLevel"
+          className='qrComponent__card-select'
+          id='errorCorrectionLevel'
           value={errorCorrectionLevel}
-          onChange={handleCorrectionLevelChange}
-        >
-          <option value="L">Simple</option>
-          <option value="M">Moderado</option>
-          <option value="Q">Avanzado</option>
-          <option value="H">Máximo</option>
+          onChange={handleCorrectionLevelChange}>
+          <option value='L'>Simple</option>
+          <option value='M'>Moderado</option>
+          <option value='Q'>Avanzado</option>
+          <option value='H'>Máximo</option>
         </select>
-
-        <button onClick={generateQRCode}>Generar QR</button>
-        {qrCodeText && <QRCode value={qrCodeText} level={errorCorrectionLevel} className="qr-code" />}
+        <button className='qrComponent__card-button' onClick={generateQRCode}>
+          Generar QR
+        </button>
+        <div className='qrComponent__qr'>
+          {qrCodeText && (
+            <QRCode
+              className='qrComponent__card-qrCode'
+              value={qrCodeText}
+              level={errorCorrectionLevel}
+            />
+          )}
+          <div className='qrComponent__buttons'>
+            <button className='qrComponent__buttons-button'>Descargar</button>
+            <button className='qrComponent__buttons-button'>Reiniciar</button>
+          </div>
+        </div>
       </div>
     </div>
   );

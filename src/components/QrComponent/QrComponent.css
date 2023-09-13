@@ -1,71 +1,123 @@
-/* Estilos para el contenedor principal */
-.container {
+.qrComponent {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  background-image: linear-gradient(
+    to right top,
+    #d16ba5,
+    #c777b9,
+    #ba83ca,
+    #aa8fd8,
+    #9a9ae1,
+    #8aa7ec,
+    #79b3f4,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
+  );
   margin: -8px;
+  font-family: 'Signika Negative', sans-serif;
+  gap: 20px;
 }
 
-/* Estilos para la tarjeta */
-.card {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+.qrComponent__card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 300px;
+  width: 30vw;
   text-align: center;
 }
 
-/* Estilos para el título */
-h1 {
+.qrComponent__card-h1 {
   color: #333;
-  font-size: 24px;
+  font-size: 2.2rem;
   margin-bottom: 20px;
+  padding: 0 0 20px 0;
 }
 
-/* Estilos para el input de texto */
-input[type="text"] {
-  width: 100%;
+.qrComponent__card-input {
+  width: 90%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
+  background-color: #ffffff63;
+  color: black;
+  font-size: 1rem;
 }
 
-/* Estilos para la etiqueta del nivel de corrección de errores */
-label {
+.qrComponent__card-label {
   display: block;
   text-align: left;
-  color: #666;
+  color: #333;
+  padding: 20px 20px;
+  font-size: 1.2rem;
 }
 
-/* Estilos para el select */
-select {
-  width: 100%;
+.qrComponent__card-select {
+  width: 94%;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
+  background-color: #ffffff63;
+  color: rgba(0, 0, 0, 0.521);
+  font-size: 1rem;
 }
 
-/* Estilos para el botón */
-button {
-  background-color: #007BFF;
-  color: #fff;
+.qrComponent__card-button {
+  background-color: #007bff28;
+  color: black;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin: 20px;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-button:hover {
-  background-color: #0056b3;
+.qrComponent__card-button:hover {
+  background-color: #1378e4;
+  color: #fff;
 }
 
-/* Estilos para el código QR */
-.qr-code {
-  margin-top: 20px;
+.qrComponent__card-qrCode {
+  padding: 10px;
+  background-color: white;
+}
+
+.qrComponent__qr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.qrComponent__buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.qrComponent__buttons-button {
+  background-color: #007bff28;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.qrComponent__buttons-button:hover {
+  background-color: #1378e4;
+  color: #fff;
 }
