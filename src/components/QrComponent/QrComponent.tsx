@@ -36,6 +36,15 @@ function QrComponent() {
     }
   };
 
+  const resetApp = () => {
+    setText('');
+    setQRCodeText('');
+    setErrorCorrectionLevel('L');
+    setShowAlert(false);
+    setQrGenerated(false);
+    setInputDisabled(false);
+  };
+
   useEffect(() => {
     let timeout: number | undefined;
     if (showAlert) {
@@ -70,7 +79,8 @@ function QrComponent() {
             value={errorCorrectionLevel}
             onChange={handleCorrectionLevelChange}
             disabled={qrGenerated}
-            style={{ pointerEvents: qrGenerated ? 'none' : 'auto' }}>
+            style={{ pointerEvents: qrGenerated ? 'none' : 'auto' }}
+          >
             <option value='L'>Simple</option>
             <option value='M'>Moderado</option>
             <option value='Q'>Avanzado</option>
@@ -94,7 +104,9 @@ function QrComponent() {
             />
             <div className='qrComponent__buttons'>
               <button className='qrComponent__buttons-button'>Descargar</button>
-              <button className='qrComponent__buttons-button'>Reiniciar</button>
+              <button className='qrComponent__buttons-button' onClick={resetApp}>
+                Reiniciar
+              </button>
             </div>
           </div>
         )}
