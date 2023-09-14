@@ -151,15 +151,29 @@
   display: block;
 }
 
-@media (max-width: 480px) {  
+@media (min-width: 481px) and (max-width: 768px) {
   .qrComponent__card {
     width: 80vw;
   }
-  
+
+  .qrComponent__card-h1 {
+    font-size: 2rem;
+  }
+
+  .qrComponent__containerSelect {
+    width: 75vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .qrComponent__card {
+    width: 80vw;
+  }
+
   .qrComponent__card-h1 {
     font-size: 1.7rem;
   }
-  
+
   .qrComponent__containerSelect {
     width: 77vw;
   }
