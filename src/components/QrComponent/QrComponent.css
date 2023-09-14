@@ -128,6 +128,10 @@
   background-color: #1378e4;
   color: #fff;
 }
+.qrComponent__buttons-button-img:hover {
+  background-color: #1378e4;
+  color: #fff;
+}
 
 .alert__container {
   display: flex;
